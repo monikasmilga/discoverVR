@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\VrMenuTranslations;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,14 +12,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(RolesSeeder::class);
-        $this->call(LanguagesSeeder::class);
-        $this->call(CategoriesSeeder::class);
-        $this->call(CategoriesTranslationsSeeder::class);
-        $this->call(PagesSeeder::class);
-        $this->call(PagesTranslationsSeeder::class);
-        $this->call(MenuSeeder::class);
-        $this->call(MenuTranslationsSeeder::class);
-    }
-}
+        $this->call(VrLanguageCodesSeeder::class);
+        $this->call(VrRolesSeeder::class);
+        $this->call(VrCategoriesSeeder::class);
+        $this->call(VrMenuSeeder::class);
+        $this->call(VrMenuTranslationsSeeder::class);
+        $this->call(VrPagesSeeder::class);
+        $this->call(VrPagesTranslationsSeeder::class);
 
+    }
+
+}
