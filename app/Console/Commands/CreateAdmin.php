@@ -53,7 +53,7 @@ class CreateAdmin extends Command
             'phone' => $phone,
 
         ]);
-        $record->role()->sync('super-admin');
+        $record->roles()->sync('super-admin');
 
     }
 }
