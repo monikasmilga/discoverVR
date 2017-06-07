@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-Rout::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
 
     Route::group(['prefix' => 'categories'], function () {
 
