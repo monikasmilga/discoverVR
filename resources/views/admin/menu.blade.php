@@ -1,4 +1,7 @@
 <div id="menu">
+    <h3>
+        {{trans('app.admin-menu')}}
+    </h3>
     <ul>
         <li><a href="{{route('app.language.index')}}">{{trans('app.language')}}</a></li>
         <li><a href="{{route('app.order.index')}}">{{trans('app.orders')}}</a></li>

@@ -7,5 +7,5 @@ return [
     'pages' => 'Puslapiai',
     'categories' => 'Kategorijos',
     'users' => 'Vartotojai',
-
+    'admin-menu' => 'Administratoriaus meniu',
 ];

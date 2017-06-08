@@ -7,4 +7,5 @@ return [
     'pages' => 'Pages',
     'categories' => 'Categories',
     'users' => 'Users',
+    'admin-menu' => 'Administrator menu',
 ];
