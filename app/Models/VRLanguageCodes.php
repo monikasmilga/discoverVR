@@ -9,4 +9,6 @@ class VRLanguageCodes extends CoreModel
     protected $table = 'vr_language_codes';
 
     protected $fillable = ['id', 'language_code'];
+
+    protected $updated_at = false;
 }

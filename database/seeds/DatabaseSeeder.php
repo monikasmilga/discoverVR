@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(VrRolesSeeder::class);
-
+        $this->call(VRLanguageCodesSeeder::class);
 //        $this->call(VrLanguageCodesSeeder::class);
 //        $this->call(VrCategoriesSeeder::class);
 //        $this->call(VrMenuSeeder::class);
