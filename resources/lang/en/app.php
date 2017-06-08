@@ -8,5 +8,7 @@ return [
     'categories' => 'Categories',
     'users' => 'Users',
     'admin-menu' => 'Administrator menu',
-    'no-data' => 'No data'
+    'no-data' => 'No data',
+    'disable' => 'Disable',
+    'activate' => 'Activate',
 ];

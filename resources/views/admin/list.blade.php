@@ -5,7 +5,8 @@
     <div id="list">
 
         @if(sizeof($list)>0)
-            <table>
+
+            <table class="table table-striped">
                 <tr>
                     @foreach($list[0] as $key => $value)
                         <th>{{$key}}</th>
@@ -13,8 +14,27 @@
                 </tr>
                 <tr>
                     @foreach($list as $record)
-                        @foreach($record as $recordItem)
-                            <td>{{$recordItem}}</td>
+
+                        @foreach($record as $key => $recordItem)
+
+                            @if($key == 'is_active')
+
+                                <td>
+                                    @if($recordItem == 1)
+                                        <button class="btn btn-danger"
+                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 0)">{{trans('app.disable')}}</button>
+                                        <button class="btn btn-success" style="display:none"
+                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 1)">{{trans('app.activate')}}</button>
+                                    @else
+                                        <button class="btn btn-success"
+                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 1)">{{trans('app.activate')}}</button>
+                                        <button class="btn btn-danger" style="display:none"
+                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 0)">{{trans('app.disable')}}</button>
+                                    @endif
+                                </td>
+                            @else
+                                <td>{{$recordItem}}</td>
+                            @endif
                         @endforeach
                 </tr>
                 @endforeach
@@ -25,4 +45,13 @@
 
     </div>
 
+@endsection
+
+@section('scripts')
+    <script>
+        function enableDisableLanguage(URL, value) {
+            alert('Hello')
+        }
+
+    </script>
 @endsection

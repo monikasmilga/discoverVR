@@ -14,7 +14,7 @@ class VRLanguageCodesController extends Controller {
 	public function adminIndex()
 	{
 	    $config['list'] = VRLanguageCodes::get()->toArray();
-
+        $config['callToAction'] = 'app.language.edit';
 //	    dd($config['list']);
 
 		return view('admin.list', $config);
