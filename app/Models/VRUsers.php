@@ -10,6 +10,8 @@ class VRUsers extends Authenticatable
 {
     use Notifiable;
 
+    public $incrementing = false;
+
     protected $table = 'vr_users';
 
     protected $fillable = ['id', 'name', 'email', 'password', 'remember_token', 'phone'];
