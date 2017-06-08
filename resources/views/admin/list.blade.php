@@ -4,14 +4,25 @@
 
     <div id="list">
 
-        If you pass an array of columns into a method that drops indexes, the conventional index name will be generated based on the table name, columns and key type:
+        @if(sizeof($list)>0)
+            <table>
+                <tr>
+                    @foreach($list[0] as $key => $value)
+                        <th>{{$key}}</th>
+                    @endforeach
+                </tr>
+                <tr>
+                    @foreach($list as $record)
+                        @foreach($record as $recordItem)
+                            <td>{{$recordItem}}</td>
+                        @endforeach
+                </tr>
+                @endforeach
+            </table>
 
-        Schema::table('geo', function (Blueprint $table) {
-        $table->dropIndex(['state']); // Drops index 'geo_state_index'
-        });
+        @else {{trans('app.no-data')}}
+        @endif
 
-        Foreign Key Constraints
-        Laravel also provides support for creating foreign key constraints, which are used to force referential integrity at the database level. For example, let's define a user_id column on the posts table that references the id column on a users table:
     </div>
 
-    @endsection
+@endsection

@@ -8,4 +8,5 @@ return [
     'categories' => 'Categories',
     'users' => 'Users',
     'admin-menu' => 'Administrator menu',
+    'no-data' => 'No data'
 ];

@@ -8,4 +8,5 @@ return [
     'categories' => 'Kategorijos',
     'users' => 'Vartotojai',
     'admin-menu' => 'Administratoriaus meniu',
+    'no-data' => 'Nėra duomenų'
 ];
