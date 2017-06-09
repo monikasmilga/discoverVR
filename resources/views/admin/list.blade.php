@@ -58,6 +58,16 @@
         function toggleActive(URL, value) {
 //            alert('Hello')
 //            console.log(URL, value);
+            $.ajax({
+                url: URL,
+                type: 'POST',
+                data: {
+                    is_active: value
+                },
+                success: function (r) {
+                    console.log(r)
+                }
+            })
         }
 
     </script>

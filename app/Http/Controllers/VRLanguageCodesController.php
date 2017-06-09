@@ -73,9 +73,14 @@ class VRLanguageCodesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function adminUpdate($id)
 	{
-		//
+		$data = request()->all();
+		$record = VRLanguageCodes::find($id);
+
+		$record->update($data);
+
+		return $record;
 	}
 
 	/**
