@@ -22,14 +22,14 @@
                                 <td>
                                     @if($recordItem == 1)
                                         <button class="btn btn-danger"
-                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 0)">{{trans('app.disable')}}</button>
+                                                onclick="toggleActive('{{route($callToAction, $record['id'])}}', 0)">{{trans('app.disable')}}</button>
                                         <button class="btn btn-success" style="display:none"
-                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 1)">{{trans('app.activate')}}</button>
+                                                onclick="toggleActive('{{route($callToAction, $record['id'])}}', 1)">{{trans('app.activate')}}</button>
                                     @else
                                         <button class="btn btn-success"
-                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 1)">{{trans('app.activate')}}</button>
+                                                onclick="toggleActive('{{route($callToAction, $record['id'])}}', 1)">{{trans('app.activate')}}</button>
                                         <button class="btn btn-danger" style="display:none"
-                                                onclick="enableDisableLanguage('{{route($callToAction, $record['id'])}}', 0)">{{trans('app.disable')}}</button>
+                                                onclick="toggleActive('{{route($callToAction, $record['id'])}}', 0)">{{trans('app.disable')}}</button>
                                     @endif
                                 </td>
                             @else
@@ -49,7 +49,7 @@
 
 @section('scripts')
     <script>
-        function enableDisableLanguage(URL, value) {
+        function toggleActive(URL, value) {
             alert('Hello')
         }
 
