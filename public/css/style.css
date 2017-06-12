@@ -25,6 +25,11 @@ html, body {
     padding-left: 230px;
 }
 
+#title
+{
+    font-size: larger;
+}
+
 /*td, th*/
 /*{*/
     /*border: solid 1px;*/

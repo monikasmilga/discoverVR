@@ -3,6 +3,7 @@
 use App\Models\VRLanguageCodes;
 use Illuminate\Routing\Controller;
 
+
 class VRLanguageCodesController extends Controller {
 
 	/**
@@ -15,6 +16,8 @@ class VRLanguageCodesController extends Controller {
 	{
 	    $config['list'] = VRLanguageCodes::get()->toArray();
         $config['callToAction'] = 'app.language.edit';
+        $config['title'] = trans('app.language');
+
 //	    dd($config['list']);
 
 		return view('admin.list', $config);
@@ -26,9 +29,9 @@ class VRLanguageCodesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
-		//
+//		dd(getActiveLanguages());
 	}
 
 	/**

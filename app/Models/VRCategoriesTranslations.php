@@ -8,5 +8,5 @@ class VRCategoriesTranslations extends CoreModel
 {
     protected $table = 'vr_categories_translations';
 
-    protected $fillable = ['id', 'name', 'language_code', 'category_id'];
+    protected $fillable = ['id', 'name', 'language_code', 'record_id'];
 }

@@ -11,4 +11,6 @@ return [
     'no-data' => 'Nėra duomenų',
     'disable' => 'Išjungti',
     'activate' => 'Įjungti',
+    'new' => 'Naujas',
+    'name' => 'Pavadinimas',
 ];

@@ -11,4 +11,6 @@ return [
     'no-data' => 'No data',
     'disable' => 'Disable',
     'activate' => 'Activate',
+    'new' => 'New',
+    'name' => 'Name',
 ];
