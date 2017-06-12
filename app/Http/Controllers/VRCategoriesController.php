@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\VRCategories;
 use Illuminate\Routing\Controller;
 
 class VRCategoriesController extends Controller {
@@ -10,9 +11,11 @@ class VRCategoriesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function adminIndex()
 	{
-		//
+        $config['list'] = VRCategories::get()->toArray();
+
+        return view('admin.list', $config);
 	}
 
 	/**
@@ -21,9 +24,9 @@ class VRCategoriesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
-		//
+		return view('admin.categories');
 	}
 
 	/**
