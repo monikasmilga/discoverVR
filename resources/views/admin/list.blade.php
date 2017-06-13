@@ -42,6 +42,10 @@
                                                     onclick="toggleActive('{{route($callToAction, $record['id'])}}', 0)">{{trans('app.disable')}}</button>
                                         @endif
                                     </td>
+                                @elseif($key == 'translation')
+                                    <td>
+                                        {{ $recordItem['name'] }}
+                                    </td>
                                 @else
                                     <td>{{$recordItem}}</td>
                                 @endif

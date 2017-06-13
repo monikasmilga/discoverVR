@@ -102,6 +102,9 @@ class VRCategoriesController extends Controller
         $config['title'] = $id;
         $config['route'] = route('app.categories.create');
 
+        $record=VRCategories::find($id)->toArray();
+//        dd($record);
+
         return view('admin.form', $config);
     }
 

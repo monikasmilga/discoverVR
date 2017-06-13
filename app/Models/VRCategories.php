@@ -9,4 +9,13 @@ class VRCategories extends CoreModel
     protected $table = 'vr_categories';
 
     protected $fillable = ['id'];
+
+    public function translation()
+    {
+
+        return $this->hasOne(VRCategoriesTranslations::class, 'record_id', 'id');
+    }
+
+    protected $with = ['translation'];
+
 }
