@@ -8,7 +8,7 @@
         </div>
 
 
-        {!! Form::open(['url' => route($route), 'files' => true]) !!}
+        {!! Form::open(['url' => $route, 'files' => true]) !!}
 
         @foreach($fields as $field)
 

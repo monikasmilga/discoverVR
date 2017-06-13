@@ -6,7 +6,7 @@
         <div id="title">
             {{ $title }} <br/>
             @if(isset($route))
-                <a class="btn btn-primary" href="{{ route($route) }}">{{trans('app.new')}}</a>
+                <a class="btn btn-primary" href="{{ $route }}">{{trans('app.new')}}</a>
             @endif
 
         </div>

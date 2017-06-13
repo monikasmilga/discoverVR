@@ -18,7 +18,7 @@ class VRCategoriesController extends Controller
         $config['list'] = VRCategories::get()->toArray();
         $config['create'] = 'app.categories.create';
         $config['title'] = trans('app.categories');
-        $config['route'] = 'app.categories.create';
+        $config['route'] = route('app.categories.create');
 
         return view('admin.list', $config);
     }
@@ -31,19 +31,9 @@ class VRCategoriesController extends Controller
      */
     public function adminCreate()
     {
+        $config = $this->getFormData();
         $config['title'] = trans('app.categories');
-        $config['route'] = 'app.categories.create';
-
-        $config['fields'][] = [
-            'type' => 'dropdown',
-            'key' => 'language_code',
-            'options' => getActiveLanguages()
-        ];
-
-        $config['fields'][] = [
-            'type' => 'singleline',
-            'key' => 'name',
-        ];
+        $config['route'] = route('app.categories.create');
 
         return view('admin.form', $config);
     }
@@ -108,7 +98,11 @@ class VRCategoriesController extends Controller
      */
     public function adminEdit($id)
     {
-        return ('labas');
+        $config = $this->getFormData();
+        $config['title'] = $id;
+        $config['route'] = route('app.categories.create');
+
+        return view('admin.form', $config);
     }
 
     /**
@@ -135,4 +129,19 @@ class VRCategoriesController extends Controller
         //
     }
 
+    public function getFormData()
+    {
+        $config['fields'][] = [
+            'type' => 'dropdown',
+            'key' => 'language_code',
+            'options' => getActiveLanguages()
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'name',
+        ];
+
+        return $config;
+    }
 }
