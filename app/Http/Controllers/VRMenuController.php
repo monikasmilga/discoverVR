@@ -12,7 +12,7 @@ class VRMenuController extends Controller {
 	 */
 	public function index()
 	{
-		//
+
 	}
 
 	/**
@@ -84,5 +84,39 @@ class VRMenuController extends Controller {
 	{
 		//
 	}
+
+    public function getFormData()
+    {
+        $config['fields'][] = [
+            'type' => 'dropdown',
+            'key' => 'language_code',
+            'options' => getActiveLanguages()
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'name',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'url',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'url',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'checkbox',
+            'key' => 'new_window',
+            'options' => [
+                'value' => 'label'
+            ]
+        ];
+
+        return $config;
+    }
 
 }
