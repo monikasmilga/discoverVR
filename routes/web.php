@@ -35,8 +35,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin-check']], fun
             Route::get('/edit', ['as' => 'app.categories.edit', 'uses' => 'VRCategoriesController@adminEdit']);
             Route::post('/edit', ['as' => 'app.categories.update', 'uses' => 'VRCategoriesController@adminUpdate']);
 
-            Route::get('/', ['as' => 'app.categories.show', 'uses' => 'VRCategoriesController@adminShow']);
             Route::delete('/', ['as' => 'app.categories.delete', 'uses' => 'VRCategoriesController@adminDestroy']);
+            Route::get('/', ['as' => 'app.categories.show', 'uses' => 'VRCategoriesController@adminShow']);
         });
 
 

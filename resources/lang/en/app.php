@@ -16,4 +16,6 @@ return [
     'submit' => 'Submit',
     'language_code' => 'Language',
     'menu' => 'Menu',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
 ];

@@ -16,9 +16,15 @@ class VRCategoriesController extends Controller
     public function adminIndex()
     {
         $config['list'] = VRCategories::get()->toArray();
+
         $config['create'] = 'app.categories.create';
+        $config['edit'] = 'app.categories.edit';
+        $config['delete'] = 'app.categories.delete';
+
         $config['title'] = trans('app.categories');
         $config['route'] = route('app.categories.create');
+
+
 
         return view('admin.list', $config);
     }
@@ -72,7 +78,7 @@ class VRCategoriesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function show($id)
+    public function adminShow($id)
     {
         //
     }
@@ -127,9 +133,15 @@ class VRCategoriesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function adminDestroy($id)
     {
-        //
+
+        VRCategoriesTranslations::destroy(VRCategoriesTranslations::where('record_id', $id)->pluck('id')->toArray());
+        VrCategories::destroy($id);
+
+        return ["success" => true, "id" => $id];
+
+
     }
 
     public function getFormData()

@@ -16,5 +16,7 @@ return [
     'submit' => 'Pateikti',
     'language_code' => 'Kalba',
     'menu' => 'Menu',
+    'edit' => 'Redaguoti',
+    'delete' => 'Ištrinti',
 
 ];

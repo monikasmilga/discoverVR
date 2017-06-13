@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VRLanguageCodes extends CoreModel
+class VRLanguageCodes extends Model
 {
     protected $table = 'vr_language_codes';
 
