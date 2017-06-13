@@ -13,4 +13,7 @@ return [
     'activate' => 'Activate',
     'new' => 'New',
     'name' => 'Name',
+    'submit' => 'Submit',
+    'language_code' => 'Language',
+    'menu' => 'Menu',
 ];

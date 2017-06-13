@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="list">
-        <div class="title">
+        <div id="title">
             {{ $title }} <br/>
             @if(isset($route))
                 <a class="btn btn-primary" href="{{ route($route) }}">{{trans('app.new')}}</a>

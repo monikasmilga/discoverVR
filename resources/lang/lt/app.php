@@ -13,4 +13,8 @@ return [
     'activate' => 'Įjungti',
     'new' => 'Naujas',
     'name' => 'Pavadinimas',
+    'submit' => 'Pateikti',
+    'language_code' => 'Kalba',
+    'menu' => 'Menu',
+
 ];

@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="list">
-        <div>
+        <div id="title">
             {{ $title }}
         </div>
 
@@ -14,13 +14,13 @@
 
             @if($field['type'] == 'dropdown')
 
-                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}
+                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
                 {{Form::select($field['key'], $field['options'])}}<br/>
 
             @elseif($field['type'] == 'singleline')
 
-                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}
-                {{Form::text($field['key'])}}
+                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
+                {{Form::text($field['key'])}}<br/>
 
             @endif
 
@@ -28,7 +28,7 @@
         @endforeach
 
 
-        {{ Form::submit('Click Me!') }}
+        {{ Form::submit(trans('app.submit')) }}
 
 
         {!! Form::close() !!}
