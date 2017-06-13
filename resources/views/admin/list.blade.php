@@ -44,10 +44,10 @@
                                     </td>
                                 @elseif($key == 'translation')
                                     <td>
-                                        {{ $recordItem['name'] }}
+                                        {{ $recordItem['name'] . ' ' . $recordItem['language_code'] }}
                                     </td>
                                 @else
-                                    <td>{{$recordItem}}</td>
+                                    <td>{{ $recordItem }}</td>
                                 @endif
                             @endforeach
                         </tr>
