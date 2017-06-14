@@ -20,9 +20,9 @@ return [
     'delete' => 'Ištrinti',
     'url' => 'URL',
     'sequence' => 'Eiliškumas',
-    'new_window' => 'Naujas langas',
+    'new_window' => 'Atidaryti naujame lange',
     'vr_parent_id' => 'Tėvinio elemento ID',
-
+    'yes' => 'Taip',
 
 
 

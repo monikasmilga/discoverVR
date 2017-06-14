@@ -12,21 +12,21 @@
 
         @foreach($fields as $field)
 
+            {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
+
             @if($field['type'] == 'dropdown')
 
-                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
                 {{Form::select($field['key'], $field['options'])}}<br/>
 
             @elseif($field['type'] == 'singleline')
 
-                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
                 {{Form::text($field['key'])}}<br/>
 
             @elseif($field['type'] == 'checkbox')
-
-                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
-                {{Form::checkbox($field['key'])}}<br/>
-
+                @foreach($field['options'] as $option)
+                    {{Form::checkbox($option['name'], $option['value'])}}
+                    {!! Form::label($option['title']) !!}<br/>
+                @endforeach
             @endif
 
 
