@@ -22,6 +22,11 @@
                 {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
                 {{Form::text($field['key'])}}<br/>
 
+            @elseif($field['type'] == 'checkbox')
+
+                {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
+                {{Form::checkbox($field['key'])}}<br/>
+
             @endif
 
 

@@ -18,5 +18,12 @@ return [
     'menu' => 'Menu',
     'edit' => 'Redaguoti',
     'delete' => 'Ištrinti',
+    'url' => 'URL',
+    'sequence' => 'Eiliškumas',
+    'new_window' => 'Naujas langas',
+    'vr_parent_id' => 'Tėvinio elemento ID',
+
+
+
 
 ];

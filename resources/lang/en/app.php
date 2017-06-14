@@ -18,4 +18,9 @@ return [
     'menu' => 'Menu',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'url' => 'URL',
+    'sequence' => 'Sequence',
+    'new_window' => 'New window',
+    'vr_parent_id' => 'Parent ID',
+
 ];

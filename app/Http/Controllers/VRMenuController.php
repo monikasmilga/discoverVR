@@ -121,16 +121,21 @@ class VRMenuController extends Controller {
         ];
 
         $config['fields'][] = [
-            'type' => 'singleline',
-            'key' => 'url',
-        ];
-
-        $config['fields'][] = [
             'type' => 'checkbox',
             'key' => 'new_window',
             'options' => [
                 'key' => 'value'
             ]
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'sequence',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'vr_parent_id',
         ];
 
         return $config;
