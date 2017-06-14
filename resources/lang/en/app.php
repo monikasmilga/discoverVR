@@ -20,7 +20,7 @@ return [
     'delete' => 'Delete',
     'url' => 'URL',
     'sequence' => 'Sequence',
-    'new_window' => 'New window',
+    'new_window' => 'Open in new window',
     'vr_parent_id' => 'Parent ID',
 
 ];

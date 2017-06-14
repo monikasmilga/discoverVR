@@ -11,4 +11,6 @@ class VRLanguageCodes extends Model
     protected $fillable = ['id', 'language_code', 'name', 'is_active'];
 
     public $timestamps = false;
+
+    public $incrementing = false;
 }
