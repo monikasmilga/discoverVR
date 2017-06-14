@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\VRMenu;
 use Illuminate\Routing\Controller;
 
 class VRMenuController extends Controller {
@@ -10,9 +11,21 @@ class VRMenuController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function adminIndex()
 	{
 
+        $config['list'] = VRMenu::get()->toArray();
+
+        $config['create'] = 'app.menu.create';
+        $config['edit'] = 'app.menu.edit';
+        $config['delete'] = 'app.menu.delete';
+
+        $config['title'] = trans('app.menu');
+        $config['route'] = route('app.menu.create');
+
+
+
+        return view('admin.list', $config);
 	}
 
 	/**
@@ -21,9 +34,13 @@ class VRMenuController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
-		//
+        $config = $this->getFormData();
+        $config['title'] = trans('app.menu');
+        $config['route'] = route('app.menu.create');
+
+        return view('admin.form', $config);
 	}
 
 	/**
@@ -112,7 +129,7 @@ class VRMenuController extends Controller {
             'type' => 'checkbox',
             'key' => 'new_window',
             'options' => [
-                'value' => 'label'
+                'key' => 'value'
             ]
         ];
 
