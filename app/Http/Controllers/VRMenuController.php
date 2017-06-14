@@ -137,9 +137,7 @@ class VRMenuController extends Controller
         $config['fields'][] = [
             'type' => 'dropdown',
             'key' => 'vr_parent_id',
-            'options' => [
-
-            ]
+            'options' => VRMenuTranslations::get()->pluck('name', 'record_id')
         ];
 
         $config['fields'][] = [

@@ -16,8 +16,13 @@
 
             @if($field['type'] == 'dropdown')
 
+                @if($field['key'] == 'language_code')
+
                 {{Form::select($field['key'], $field['options'])}}<br/>
 
+                @else
+                    {{Form::select($field['key'], $field['options'], null, ['placeholder' => ''])}}<br/>
+                @endif
             @elseif($field['type'] == 'singleline')
 
                 {{Form::text($field['key'])}}<br/>
