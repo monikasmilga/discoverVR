@@ -95,7 +95,7 @@ class VRMenuController extends Controller
         $config['route'] = route('app.menu.create');
 
 
-//        dd($config['record']);
+//        dd($config);
 
         return view('admin.form', $config);
     }

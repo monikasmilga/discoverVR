@@ -18,14 +18,25 @@
 
             @if($field['type'] == 'dropdown')
 
-                @if($field['key'] == 'language_code')
+                @if(isset($record[$field['key']]))
 
-                    {{Form::select($field['key'], $field['options'])}}<br/>
+                    @if($field['key'] == 'language_code')
+
+                        {{Form::select($field['key'], $field['options'], $record[$field['key']])}}<br/>
+
+                    @else
+                        {{Form::select($field['key'], $field['options'], $record[$field['key']], ['placeholder' => ''])}}<br/>
+                    @endif
 
                 @else
-                    {{Form::select($field['key'], $field['options'], null, ['placeholder' => ''])}}<br/>
-                @endif
+                    @if($field['key'] == 'language_code')
 
+                        {{Form::select($field['key'], $field['options'])}}<br/>
+
+                    @else
+                        {{Form::select($field['key'], $field['options'], null, ['placeholder' => ''])}}<br/>
+                    @endif
+                @endif
 
 
             @elseif($field['type'] == 'singleline')
@@ -38,8 +49,17 @@
 
 
             @elseif($field['type'] == 'checkbox')
+
                 @foreach($field['options'] as $option)
-                    {{Form::checkbox($option['name'], $option['value'])}}
+
+
+                    @if(isset($record[$field['key']]))
+                        {{Form::checkbox($option['name'], $option['value'], $record[$field['key']])}}
+                    @else
+                        {{Form::checkbox($option['name'], $option['value'])}}
+                    @endif
+
+
                     {!! Form::label($option['title']) !!}<br/>
                 @endforeach
 
