@@ -134,10 +134,14 @@ class VRMenuController extends Controller
             'key' => 'sequence',
         ];
 
+        $language = request('language_code');
+        if($language == null){
+            $language = app()->getLocale();
+        }
         $config['fields'][] = [
             'type' => 'dropdown',
             'key' => 'vr_parent_id',
-            'options' => VRMenuTranslations::get()->pluck('name', 'record_id')
+            'options' => VRMenuTranslations::where('language_code', '=', $language)->pluck('name', 'record_id')
         ];
 
         $config['fields'][] = [

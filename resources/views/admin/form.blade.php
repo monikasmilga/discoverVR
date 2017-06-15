@@ -18,7 +18,7 @@
 
                 @if($field['key'] == 'language_code')
 
-                {{Form::select($field['key'], $field['options'])}}<br/>
+                    {{Form::select($field['key'], $field['options'])}}<br/>
 
                 @else
                     {{Form::select($field['key'], $field['options'], null, ['placeholder' => ''])}}<br/>
@@ -43,4 +43,18 @@
 
         {!! Form::close() !!}
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+
+        $('#language_code').bind("change", function()
+        {
+//            console.log(window.location.href)
+            window.location.href="?language_code=" + $('#language_code').val()
+//            alert($('#language_code').val())
+        })
+
+
+    </script>
 @endsection
