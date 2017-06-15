@@ -14,6 +14,8 @@
 
             {!! Form::label($field['key'], trans('app.' . $field['key'])) !!}<br/>
 
+
+
             @if($field['type'] == 'dropdown')
 
                 @if($field['key'] == 'language_code')
@@ -23,15 +25,24 @@
                 @else
                     {{Form::select($field['key'], $field['options'], null, ['placeholder' => ''])}}<br/>
                 @endif
+
+
+
             @elseif($field['type'] == 'singleline')
 
-                {{Form::text($field['key'])}}<br/>
+                @if(isset($record[$field['key']]))
+                    {{Form::text($field['key'], $record[$field['key']])}}<br/>
+                @else
+                    {{Form::text($field['key'])}}<br/>
+                @endif
+
 
             @elseif($field['type'] == 'checkbox')
                 @foreach($field['options'] as $option)
                     {{Form::checkbox($option['name'], $option['value'])}}
                     {!! Form::label($option['title']) !!}<br/>
                 @endforeach
+
             @endif
 
 
@@ -48,10 +59,9 @@
 @section('scripts')
     <script>
 
-        $('#language_code').bind("change", function()
-        {
+        $('#language_code').bind("change", function () {
 //            console.log(window.location.href)
-            window.location.href="?language_code=" + $('#language_code').val()
+            window.location.href = "?language_code=" + $('#language_code').val()
 //            alert($('#language_code').val())
         })
 

@@ -84,16 +84,20 @@ class VRMenuController extends Controller
      */
     public function adminEdit($id)
     {
-        $record=VRMenu::find($id)->toArray();
+        $record = VRMenu::find($id)->toArray();
+        $record['url'] = $record['translation']['url'];
+        $record['name'] = $record['translation']['name'];
+        $record['language_code'] = $record['translation']['language_code'];
 
         $config = $this->getFormData();
+        $config['record']=$record;
         $config['title'] = trans('app.menu');
         $config['route'] = route('app.menu.create');
 
 
-//        dd($record);
+//        dd($config['record']);
 
-        return view ('admin.form', $config);
+        return view('admin.form', $config);
     }
 
     /**
@@ -144,7 +148,7 @@ class VRMenuController extends Controller
         ];
 
         $language = request('language_code');
-        if($language == null){
+        if ($language == null) {
             $language = app()->getLocale();
         }
         $config['fields'][] = [
