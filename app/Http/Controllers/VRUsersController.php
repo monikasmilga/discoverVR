@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\VRUsers;
 use Illuminate\Routing\Controller;
 
 class VRUsersController extends Controller {
@@ -13,6 +14,21 @@ class VRUsersController extends Controller {
 	public function index()
 	{
 		//
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 * GET /vrusers
+	 *
+	 * @return Response
+	 */
+	public function adminIndex()
+	{
+	    $config['title'] = trans('app.users');
+	    $config['list'] = VRUsers::get()->toArray();
+
+
+		return view('admin.list', $config);
 	}
 
 	/**
