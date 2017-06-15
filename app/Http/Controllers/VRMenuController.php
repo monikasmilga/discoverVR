@@ -18,7 +18,7 @@ class VRMenuController extends Controller
 
         $config['list'] = VRMenu::get()->toArray();
 
-        $config['create'] = 'app.menu.create';
+//        $config['create'] = 'app.menu.create';
         $config['edit'] = 'app.menu.edit';
         $config['delete'] = 'app.menu.delete';
 

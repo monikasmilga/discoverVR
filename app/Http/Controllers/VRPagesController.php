@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\VRPages;
 use Illuminate\Routing\Controller;
 
 class VRPagesController extends Controller {
@@ -13,6 +14,23 @@ class VRPagesController extends Controller {
 	public function index()
 	{
 		//
+	}	/**
+	 * Display a listing of the resource.
+	 * GET /vrpages
+	 *
+	 * @return Response
+	 */
+
+	public function adminIndex()
+	{
+	    $config['list'] =VRPages::get()->toArray();
+	    $config['title'] = trans('app.pages');
+        $config['route'] = route('app.pages.create');
+
+        $config['edit'] = 'app.pages.edit';
+        $config['delete'] = 'app.pages.delete';
+
+        return view('admin.list', $config);
 	}
 
 	/**
