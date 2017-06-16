@@ -32,6 +32,8 @@ class VRUsersController extends Controller
         $config['list'] = VRUsers::get()->toArray();
 
         $config['route'] = route('app.users.create');
+        $config['edit'] = 'app.users.edit';
+        $config['delete'] = 'app.users.delete';
 
 //        dd($config);
 
@@ -63,13 +65,13 @@ class VRUsersController extends Controller
     public function adminStore()
     {
         $data = request()->all();
-        $data['id']=Uuid::uuid4();
+        $data['id'] = Uuid::uuid4();
         $data['password'] = bcrypt($data['password']);
 
         $record = VRUsers::create($data);
 
 
-        $data['user_id']=$record->id;
+        $data['user_id'] = $record->id;
 
         VRUsersRolesConnections::create($data);
 //dd($record->toArray());
@@ -97,8 +99,7 @@ class VRUsersController extends Controller
      */
     public function adminEdit($id)
     {
-        $record=VRUsers::find($id)->toArray();
-
+        $record = VRUsers::find($id)->toArray();
 
         $record['role_id'] = $record['role']['role_id'];
 
