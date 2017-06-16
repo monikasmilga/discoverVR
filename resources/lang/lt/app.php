@@ -23,6 +23,11 @@ return [
     'new_window' => 'Atidaryti naujame lange',
     'vr_parent_id' => 'Tėvinio elemento ID',
     'yes' => 'Taip',
+    'email' => 'Elektroninio pašto adresas',
+    'password' => 'Slaptažodis',
+    'phone' => 'Telefono numeris',
+    'role_id' => 'Rolė',
+
 
 
 

@@ -25,7 +25,8 @@
                         {{Form::select($field['key'], $field['options'], $record[$field['key']])}}<br/>
 
                     @else
-                        {{Form::select($field['key'], $field['options'], $record[$field['key']], ['placeholder' => ''])}}<br/>
+                        {{Form::select($field['key'], $field['options'], $record[$field['key']], ['placeholder' => ''])}}
+                        <br/>
                     @endif
 
                 @else
@@ -68,9 +69,9 @@
 
         @endforeach
 
-
-        {{ Form::submit(trans('app.submit')) }}
-
+        <div style="padding-top: 20px">
+            {{ Form::submit(trans('app.submit')) }}
+        </div>
 
         {!! Form::close() !!}
     </div>

@@ -1,104 +1,157 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\VRRoles;
 use App\Models\VRUsers;
+use App\Models\VRUsersRolesConnections;
 use Illuminate\Routing\Controller;
+use Ramsey\Uuid\Uuid;
 
-class VRUsersController extends Controller {
+class VRUsersController extends Controller
+{
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /vrusers
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+    /**
+     * Display a listing of the resource.
+     * GET /vrusers
+     *
+     * @return Response
+     */
+    public function index()
+    {
+        //
+    }
 
-	/**
-	 * Display a listing of the resource.
-	 * GET /vrusers
-	 *
-	 * @return Response
-	 */
-	public function adminIndex()
-	{
-	    $config['title'] = trans('app.users');
-	    $config['list'] = VRUsers::get()->toArray();
+    /**
+     * Display a listing of the resource.
+     * GET /vrusers
+     *
+     * @return Response
+     */
+    public function adminIndex()
+    {
+        $config['title'] = trans('app.users');
+        $config['list'] = VRUsers::get()->toArray();
+
+        $config['route'] = route('app.users.create');
 
 
-		return view('admin.list', $config);
-	}
+        return view('admin.list', $config);
+    }
 
-	/**
-	 * Show the form for creating a new resource.
-	 * GET /vrusers/create
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
+    /**
+     * Show the form for creating a new resource.
+     * GET /vrusers/create
+     *
+     * @return Response
+     */
+    public function adminCreate()
+    {
+        $config = $this->getFormData();
 
-	/**
-	 * Store a newly created resource in storage.
-	 * POST /vrusers
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
+        $config['title'] = trans('app.users');
+        $config['route'] = route('app.users.create');
 
-	/**
-	 * Display the specified resource.
-	 * GET /vrusers/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
+        return view('admin.form', $config);
+    }
 
-	/**
-	 * Show the form for editing the specified resource.
-	 * GET /vrusers/{id}/edit
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
+    /**
+     * Store a newly created resource in storage.
+     * POST /vrusers
+     *
+     * @return Response
+     */
+    public function adminStore()
+    {
+        $data = request()->all();
+        $data['id']=Uuid::uuid4();
 
-	/**
-	 * Update the specified resource in storage.
-	 * PUT /vrusers/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
+        $record = VRUsers::create($data);
 
-	/**
-	 * Remove the specified resource from storage.
-	 * DELETE /vrusers/{id}
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
+
+        $data['user_id']=$record->id;
+
+        VRUsersRolesConnections::create($data);
+
+        return redirect()->route('app.users.edit', $record->id);
+    }
+
+    /**
+     * Display the specified resource.
+     * GET /vrusers/{id}
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     * GET /vrusers/{id}/edit
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function adminEdit($id)
+    {
+        return view('admin.form');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * PUT /vrusers/{id}
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function update($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * DELETE /vrusers/{id}
+     *
+     * @param  int $id
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function getFormData()
+    {
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'name',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'email',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'password',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'phone',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'dropdown',
+            'key' => 'role_id',
+            'options' => VRRoles::pluck('id', 'name')
+        ];
+
+        return $config;
+    }
+
 
 }

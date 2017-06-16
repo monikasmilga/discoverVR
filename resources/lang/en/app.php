@@ -23,6 +23,12 @@ return [
     'new_window' => 'Open in new window',
     'vr_parent_id' => 'Parent ID',
     'yes' => 'Yes',
+    'email' => 'Email address',
+    'password' => 'Password',
+    'phone' => 'Phone number',
+    'role_id' => 'Role',
+
+
 
 
 ];
