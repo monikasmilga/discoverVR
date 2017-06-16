@@ -33,6 +33,7 @@ class VRUsersController extends Controller
 
         $config['route'] = route('app.users.create');
 
+//        dd($config);
 
         return view('admin.list', $config);
     }
@@ -63,6 +64,7 @@ class VRUsersController extends Controller
     {
         $data = request()->all();
         $data['id']=Uuid::uuid4();
+        $data['password'] = bcrypt($data['password']);
 
         $record = VRUsers::create($data);
 
@@ -70,7 +72,7 @@ class VRUsersController extends Controller
         $data['user_id']=$record->id;
 
         VRUsersRolesConnections::create($data);
-
+//dd($record->toArray());
         return redirect()->route('app.users.edit', $record->id);
     }
 
@@ -95,7 +97,19 @@ class VRUsersController extends Controller
      */
     public function adminEdit($id)
     {
-        return view('admin.form');
+        $record=VRUsers::find($id)->toArray();
+
+
+        $record['role_id'] = $record['role']['role_id'];
+
+
+        $config = $this->getFormData();
+        $config['record'] = $record;
+        $config['title'] = trans('app.users');
+        $config['route'] = route('app.users.create');
+
+
+        return view('admin.form', $config);
     }
 
     /**
@@ -147,7 +161,7 @@ class VRUsersController extends Controller
         $config['fields'][] = [
             'type' => 'dropdown',
             'key' => 'role_id',
-            'options' => VRRoles::pluck('id', 'name')
+            'options' => VRRoles::pluck('name', 'id')
         ];
 
         return $config;

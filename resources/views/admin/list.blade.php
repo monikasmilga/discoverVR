@@ -52,6 +52,12 @@
                                     <td>
                                         {{ $recordItem['name'] . ' ' . $recordItem['language_code'] }}
                                     </td>
+                                @elseif($key == 'role')
+
+                                    <td>
+                                        {{ $recordItem['role_id'] }}
+                                    </td>
+
                                 @else
                                     <td>{{ $recordItem }}</td>
                                 @endif

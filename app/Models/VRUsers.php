@@ -19,4 +19,12 @@ class VRUsers extends Authenticatable
     public function roles(){
         return $this->belongsToMany(VRRoles::class, 'vr_connections_users_roles', 'user_id', 'role_id');
     }
+
+    public function role(){
+        return $this->hasOne(VRUsersRolesConnections::class, 'user_id', 'id');
+    }
+
+    protected $with = ['role'];
+
+    protected $hidden =['password', 'remember_token'];
 }
