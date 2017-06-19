@@ -74,7 +74,7 @@ class VRUsersController extends Controller
         $data['user_id'] = $record->id;
 
         VRUsersRolesConnections::create($data);
-//dd($record->toArray());
+
         return redirect()->route('app.users.edit', $record->id);
     }
 
@@ -120,7 +120,7 @@ class VRUsersController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function adminUpdate($id)
     {
         //
     }
@@ -132,10 +132,14 @@ class VRUsersController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function destroy($id)
+    public function adminDestroy($id)
     {
-        //
+        VRUsersRolesConnections::where('user_id', $id)->delete();
+        VRUsers::destroy($id);
+
+        return json_encode(["success" => true, "id" => $id]);
     }
+
 
     public function getFormData()
     {

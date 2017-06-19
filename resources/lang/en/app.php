@@ -27,7 +27,11 @@ return [
     'password' => 'Password',
     'phone' => 'Phone number',
     'role_id' => 'Role',
-
+    'description_short' => 'Short description',
+    'description_long' => 'Long description',
+    'cover_id' => 'Cover image',
+    'category_id' => 'Category',
+    'title' => 'Title',
 
 
 

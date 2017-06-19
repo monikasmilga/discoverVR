@@ -27,8 +27,10 @@ return [
     'password' => 'Slaptažodis',
     'phone' => 'Telefono numeris',
     'role_id' => 'Rolė',
-
-
-
+    'description_short' => 'Trumpas aprašymas',
+    'description_long' => 'Ilgas aprašymas',
+    'cover_id' => 'Viršelio nuotrauka',
+    'title' => 'Pavadinimas',
+    'category_id' => 'Kategorija',
 
 ];

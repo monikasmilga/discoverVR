@@ -3,7 +3,7 @@
 @section('content')
 
     <div id="list">
-        <div id="title">
+        <div id="pagetitle">
             {{ $title }}
         </div>
 
@@ -64,6 +64,12 @@
                     {!! Form::label($option['title']) !!}<br/>
                 @endforeach
 
+            @elseif($field['type'] == 'textarea')
+                @if(isset($record[$field['key']]))
+                    {{Form::textarea($field['key'], $record[$field['key']])}}<br/>
+                @else
+                    {{Form::textarea($field['key'])}}<br/>
+                @endif
             @endif
 
 

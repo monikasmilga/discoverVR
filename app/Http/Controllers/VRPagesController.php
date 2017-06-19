@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\VRCategories;
+use App\Models\VRCategoriesTranslations;
 use App\Models\VRPages;
 use Illuminate\Routing\Controller;
 
@@ -39,9 +41,13 @@ class VRPagesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
-		//
+		$config= $this->getFormData();
+        $config['title'] = trans('app.pages');
+        $config['route'] = route('app.pages.create');
+
+        return view('admin.form', $config);
 	}
 
 	/**
@@ -103,4 +109,47 @@ class VRPagesController extends Controller {
 		//
 	}
 
+    public function getFormData()
+    {
+        $config['fields'][] = [
+            'type' => 'dropdown',
+            'key' => 'language_code',
+            'options' => getActiveLanguages()
+        ];
+
+        $language = request('language_code');
+        if ($language == null) {
+            $language = app()->getLocale();
+
+            $config['fields'][] = [
+                'type' => 'dropdown',
+                'key' => 'category_id',
+                'options' => VRCategoriesTranslations::where('language_code', '=', $language)->pluck('name', 'id')
+            ];
+
+            $config['fields'][] = [
+                'type' => 'singleline',
+                'key' => 'title',
+            ];
+
+            $config['fields'][] = [
+                'type' => 'singleline',
+                'key' => 'cover_id'
+            ];
+
+
+            $config['fields'][] = [
+                'type' => 'textarea',
+                'key' => 'description_short',
+            ];
+
+
+            $config['fields'][] = [
+                'type' => 'textarea',
+                'key' => 'description_long',
+            ];
+
+            return $config;
+        }
+    }
 }
