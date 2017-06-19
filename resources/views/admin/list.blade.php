@@ -24,9 +24,9 @@
                         @if(isset($edit))
                             <th> {{ trans('app.edit') }}</th>
                         @endif
-                            @if(isset($delete))
-                                <th> {{ trans('app.delete') }}</th>
-                            @endif
+                        @if(isset($delete))
+                            <th> {{ trans('app.delete') }}</th>
+                        @endif
                     </tr>
 
                     @foreach($list as $record)
@@ -50,8 +50,13 @@
                                     </td>
                                 @elseif($key == 'translation')
                                     <td>
-                                        {{ $recordItem['name'] . ' ' . $recordItem['language_code'] }}
+                                        @if(isset($recordItem['name']))
+                                            {{ $recordItem['name'] . ' ' . $recordItem['language_code'] }}
+                                        @else
+                                            {{ $recordItem['title'] . ' ' . $recordItem['language_code'] }}
+                                        @endif
                                     </td>
+
                                 @elseif($key == 'role')
 
                                     <td>
@@ -66,12 +71,12 @@
                                 <td><a class="btn btn-info"
                                        href="{{ route($edit, $record['id']) }}">{{ trans('app.edit') }}</a></td>
                             @endif
-                                @if(isset ($delete))
+                            @if(isset ($delete))
                                 <td>
-                                <button class="btn btn-warning"
-                                        onclick="deleteItem('{{route( $delete, $record['id'])}}', 0)">{{ trans('app.delete') }}</button>
-                            </td>
-                                @endif
+                                    <button class="btn btn-warning"
+                                            onclick="deleteItem('{{route( $delete, $record['id'])}}', 0)">{{ trans('app.delete') }}</button>
+                                </td>
+                            @endif
 
                         </tr>
                     @endforeach

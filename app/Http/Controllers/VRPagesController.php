@@ -3,6 +3,8 @@
 use App\Models\VRCategories;
 use App\Models\VRCategoriesTranslations;
 use App\Models\VRPages;
+use App\Models\VRPagesTranslations;
+use App\Models\VRResources;
 use Illuminate\Routing\Controller;
 
 class VRPagesController extends Controller {
@@ -56,10 +58,24 @@ class VRPagesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function adminStore()
 	{
-		//
-	}
+        $data = request()->all();
+
+        $resources = request()->file('file');
+        $uploadController = new VRResourcesController();
+        $record = $uploadController->upload($resources);
+
+        $data['cover_id'] = $record->id;
+        $record = VRPages::create($data);
+
+        $data['record_id'] = $record->id;
+        $data['slug'] = str_slug($data['title'], '-');
+        VRPagesTranslations::create($data);
+
+        return redirect(route('app.pages.edit', $record->id));
+
+    }
 
 	/**
 	 * Display the specified resource.
@@ -80,7 +96,7 @@ class VRPagesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function adminEdit($id)
 	{
 		//
 	}
@@ -124,7 +140,7 @@ class VRPagesController extends Controller {
             $config['fields'][] = [
                 'type' => 'dropdown',
                 'key' => 'category_id',
-                'options' => VRCategoriesTranslations::where('language_code', '=', $language)->pluck('name', 'id')
+                'options' => VRCategoriesTranslations::where('language_code', '=', $language)->pluck('name', 'record_id')
             ];
 
             $config['fields'][] = [
@@ -133,7 +149,7 @@ class VRPagesController extends Controller {
             ];
 
             $config['fields'][] = [
-                'type' => 'singleline',
+                'type' => 'file',
                 'key' => 'cover_id'
             ];
 

@@ -70,7 +70,16 @@
                 @else
                     {{Form::textarea($field['key'])}}<br/>
                 @endif
+
+            @elseif($field['type'] == 'file')
+                @if(isset($record[$field['key']]))
+                    {{Form::file('file'),$record[$field['key']]}}
+                @else
+                    {{Form::file('file')}}
+                @endif
+
             @endif
+
 
 
         @endforeach
