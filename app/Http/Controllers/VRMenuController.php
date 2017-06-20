@@ -22,7 +22,7 @@ class VRMenuController extends Controller
         $config['edit'] = 'app.menu.edit';
         $config['delete'] = 'app.menu.delete';
 
-        $config['title'] = trans('app.menu');
+        $config['pageTitle'] = trans('app.menu');
         $config['route'] = route('app.menu.create');
 
 
@@ -38,7 +38,7 @@ class VRMenuController extends Controller
     public function adminCreate()
     {
         $config = $this->getFormData();
-        $config['title'] = trans('app.menu');
+        $config['pageTitle'] = trans('app.menu');
         $config['route'] = route('app.menu.create');
 
         return view('admin.form', $config);
@@ -91,7 +91,7 @@ class VRMenuController extends Controller
 
         $config = $this->getFormData();
         $config['record']=$record;
-        $config['title'] = trans('app.menu');
+        $config['pageTitle'] = trans('app.menu');
         $config['route'] = route('app.menu.create');
 
 
@@ -107,7 +107,7 @@ class VRMenuController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function adminUpdate($id)
     {
         //
     }

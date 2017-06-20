@@ -49,6 +49,7 @@ class VRPagesController extends Controller
     public function adminCreate()
     {
         $config = $this->getFormData();
+//        dd($config);
         $config['pageTitle'] = trans('app.pages');
         $config['route'] = route('app.pages.create');
 
@@ -111,7 +112,8 @@ class VRPagesController extends Controller
 
         $config['record'] = $record;
         $config['pageTitle'] = trans('app.pages');
-        $config['route'] = route('app.pages.update');
+        $config['route'] = route('app.pages.update', $id);
+        //dd($config);
         return view('admin.form', $config);
 
 //        dd($config);
@@ -152,36 +154,35 @@ class VRPagesController extends Controller
         $language = request('language_code');
         if ($language == null) {
             $language = app()->getLocale();
-
-            $config['fields'][] = [
-                'type' => 'dropdown',
-                'key' => 'category_id',
-                'options' => VRCategoriesTranslations::where('language_code', '=', $language)->pluck('name', 'record_id')
-            ];
-
-            $config['fields'][] = [
-                'type' => 'singleline',
-                'key' => 'title',
-            ];
-
-            $config['fields'][] = [
-                'type' => 'file',
-                'key' => 'cover_id'
-            ];
-
-
-            $config['fields'][] = [
-                'type' => 'textarea',
-                'key' => 'description_short',
-            ];
-
-
-            $config['fields'][] = [
-                'type' => 'textarea',
-                'key' => 'description_long',
-            ];
-
-            return $config;
         }
+        $config['fields'][] = [
+            'type' => 'dropdown',
+            'key' => 'category_id',
+            'options' => VRCategoriesTranslations::where('language_code', '=', $language)->pluck('name', 'record_id')
+        ];
+
+        $config['fields'][] = [
+            'type' => 'singleline',
+            'key' => 'title',
+        ];
+
+        $config['fields'][] = [
+            'type' => 'file',
+            'key' => 'cover_id'
+        ];
+
+
+        $config['fields'][] = [
+            'type' => 'textarea',
+            'key' => 'description_short',
+        ];
+
+
+        $config['fields'][] = [
+            'type' => 'textarea',
+            'key' => 'description_long',
+        ];
+        
+        return $config;
     }
 }

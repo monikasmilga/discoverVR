@@ -27,4 +27,5 @@ class VRPages extends CoreModel
     }
 
     protected $with = ['translation', 'image'];
+
 }
