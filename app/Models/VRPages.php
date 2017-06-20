@@ -21,5 +21,10 @@ class VRPages extends CoreModel
         return $this->hasOne(VRPagesTranslations::class, 'record_id', 'id')->where('language_code', $lang);
     }
 
-    protected $with = ['translation'];
+    public function image(){
+
+        return $this->hasOne(VRResources::class, 'id', 'cover_id');
+    }
+
+    protected $with = ['translation', 'image'];
 }

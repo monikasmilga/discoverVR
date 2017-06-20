@@ -3,8 +3,8 @@
 @section('content')
 
     <div id="list">
-        <div id="title">
-            {{ $title }} <br/>
+        <div id="pagetitletitle">
+            {{ $pageTitle }} <br/>
             @if(isset($route))
                 <a class="btn btn-primary" href="{{ $route }}">{{trans('app.new')}}</a>
             @endif
@@ -55,6 +55,15 @@
                                         @else
                                             {{ $recordItem['title'] . ' ' . $recordItem['language_code'] }}
                                         @endif
+                                    </td>
+
+                                @elseif($key == 'image')
+                                    <td>
+                                        @if(isset($recordItem['path']))
+                                            <img src="{{ $recordItem['path'] }}">
+                                            @else
+                                        No image
+                                            @endif
                                     </td>
 
                                 @elseif($key == 'role')

@@ -17,7 +17,7 @@ class VROrderController extends Controller
     public function adminIndex()
     {
         $config['list'] = VROrder::get()->toArray();
-        $config['title'] = trans('app.orders');
+        $config['pageTitle'] = trans('app.orders');
         $config['route'] = route ('app.order.create');
 
         return view('admin.list', $config);
@@ -32,7 +32,7 @@ class VROrderController extends Controller
     public function adminCreate()
     {
         $config = $this->getFormData();
-        $config['title'] = trans('app.orders');
+        $config['pageTitle'] = trans('app.orders');
         $config['route'] = route('app.order.create');
 //dd($config);
         return view('admin.form', $config);

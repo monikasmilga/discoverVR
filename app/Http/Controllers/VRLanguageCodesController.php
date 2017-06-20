@@ -16,7 +16,7 @@ class VRLanguageCodesController extends Controller {
 	{
 	    $config['list'] = VRLanguageCodes::get()->toArray();
         $config['callToAction'] = 'app.language.edit';
-        $config['title'] = trans('app.language');
+        $config['pageTitle'] = trans('app.language');
 
 //	    dd($config['list']);
 

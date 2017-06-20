@@ -4,7 +4,7 @@
 
     <div id="list">
         <div id="pagetitle">
-            {{ $title }}
+            {{ $pageTitle }}
         </div>
 
 
@@ -73,6 +73,8 @@
 
             @elseif($field['type'] == 'file')
                 @if(isset($record[$field['key']]))
+                    <img src="{{asset ($record['path'])}}">
+
                     {{Form::file('file'),$record[$field['key']]}}
                 @else
                     {{Form::file('file')}}

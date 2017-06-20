@@ -28,7 +28,7 @@ class VRUsersController extends Controller
      */
     public function adminIndex()
     {
-        $config['title'] = trans('app.users');
+        $config['pageTitle'] = trans('app.users');
         $config['list'] = VRUsers::get()->toArray();
 
         $config['route'] = route('app.users.create');
@@ -50,7 +50,7 @@ class VRUsersController extends Controller
     {
         $config = $this->getFormData();
 
-        $config['title'] = trans('app.users');
+        $config['pageTitle'] = trans('app.users');
         $config['route'] = route('app.users.create');
 
         return view('admin.form', $config);
@@ -106,7 +106,7 @@ class VRUsersController extends Controller
 
         $config = $this->getFormData();
         $config['record'] = $record;
-        $config['title'] = trans('app.users');
+        $config['pageTitle'] = trans('app.users');
         $config['route'] = route('app.users.create');
 
 

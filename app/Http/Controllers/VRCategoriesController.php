@@ -21,7 +21,7 @@ class VRCategoriesController extends Controller
         $config['edit'] = 'app.categories.edit';
         $config['delete'] = 'app.categories.delete';
 
-        $config['title'] = trans('app.categories');
+        $config['pageTitle'] = trans('app.categories');
         $config['route'] = route('app.categories.create');
 
 
@@ -38,7 +38,7 @@ class VRCategoriesController extends Controller
     public function adminCreate()
     {
         $config = $this->getFormData();
-        $config['title'] = trans('app.categories');
+        $config['pageTitle'] = trans('app.categories');
         $config['route'] = route('app.categories.create');
 
         return view('admin.form', $config);
@@ -105,7 +105,7 @@ class VRCategoriesController extends Controller
     public function adminEdit($id)
     {
         $config = $this->getFormData();
-        $config['title'] = $id;
+        $config['pageTitle'] = $id;
         $config['route'] = route('app.categories.create');
 
         $record=VRCategories::find($id)->toArray();
