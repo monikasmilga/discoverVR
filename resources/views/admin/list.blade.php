@@ -60,7 +60,7 @@
                                 @elseif($key == 'image')
                                     <td>
                                         @if(isset($recordItem['path']))
-                                            <img src="{{ $recordItem['path'] }}">
+                                            <img src="{{asset ($recordItem['path']) }}", class="listImage">
                                             @else
                                         No image
                                             @endif

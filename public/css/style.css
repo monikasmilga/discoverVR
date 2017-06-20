@@ -30,6 +30,12 @@ html, body {
     font-size: 30px;
 }
 
+.listImage
+{
+    height: 50px;
+    border-radius: 50%;
+}
+
 /*td, th*/
 /*{*/
     /*border: solid 1px;*/
