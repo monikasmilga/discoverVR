@@ -111,7 +111,7 @@ class VRPagesController extends Controller
 
         $config['record'] = $record;
         $config['pageTitle'] = trans('app.pages');
-        $config['route'] = route('app.pages.create');
+        $config['route'] = route('app.pages.update');
         return view('admin.form', $config);
 
 //        dd($config);
@@ -124,9 +124,9 @@ class VRPagesController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function adminUpdate($id)
     {
-        //
+
     }
 
     /**
