@@ -14,11 +14,11 @@ class VRLanguageCodesSeeder extends Seeder
     {
         $languages = [
 
-            ['id' => 'lt','language_code' => 'LT', 'name' => 'Lietuvių'],
-            ['id' => 'en','language_code' => 'EN', 'name' => 'English'],
-            ['id' => 'ru','language_code' => 'RU', 'name' => 'Русский'],
-            ['id' => 'de','language_code' => 'DE', 'name' => 'Deutsch'],
-            ['id' => 'fr','language_code' => 'FR', 'name' => 'Français'],
+            ['id' => 'lt','language_code' => 'lt', 'name' => 'Lietuvių'],
+            ['id' => 'en','language_code' => 'en', 'name' => 'English'],
+            ['id' => 'ru','language_code' => 'ru', 'name' => 'Русский'],
+            ['id' => 'de','language_code' => 'de', 'name' => 'Deutsch'],
+            ['id' => 'fr','language_code' => 'fr', 'name' => 'Français'],
 
         ];
         DB::beginTransaction();

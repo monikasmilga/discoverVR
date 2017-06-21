@@ -104,11 +104,15 @@ class VRCategoriesController extends Controller
      */
     public function adminEdit($id)
     {
+        $record=VRCategories::find($id)->toArray();
+        $record['language_code'] = $record['translation']['language_code'];
+        $record['name'] = $record['translation']['name'];
+
         $config = $this->getFormData();
+        $config['record']=$record;
         $config['pageTitle'] = $id;
         $config['route'] = route('app.categories.create');
 
-        $record=VRCategories::find($id)->toArray();
 //        dd($record);
 
         return view('admin.form', $config);

@@ -167,12 +167,6 @@ class VRPagesController extends Controller
         ];
 
         $config['fields'][] = [
-            'type' => 'file',
-            'key' => 'cover_id'
-        ];
-
-
-        $config['fields'][] = [
             'type' => 'textarea',
             'key' => 'description_short',
         ];
@@ -182,7 +176,24 @@ class VRPagesController extends Controller
             'type' => 'textarea',
             'key' => 'description_long',
         ];
-        
+
+        $config['fields'][] = [
+            'type' => 'file',
+            'key' => 'cover_id'
+        ];
+
+        $config['fields'][] = [
+            'type' => 'checkbox',
+            'key' => 'delete',
+            'options' => [
+                [
+                    'name' => 'delete',
+                    'value' => true,
+                    'title' => trans('app.delete_image')
+                ],
+            ]
+        ];
+
         return $config;
     }
 }

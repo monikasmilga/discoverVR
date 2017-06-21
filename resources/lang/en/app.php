@@ -32,7 +32,7 @@ return [
     'cover_id' => 'Cover image',
     'category_id' => 'Category',
     'title' => 'Title',
-
+    'delete_image' => 'Delete image',
 
 
 ];

@@ -14,8 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(VrRolesSeeder::class);
         $this->call(VRLanguageCodesSeeder::class);
+        $this->call(VRCategoriesSeeder::class);
+
 //        $this->call(VrLanguageCodesSeeder::class);
-//        $this->call(VrCategoriesSeeder::class);
 //        $this->call(VrMenuSeeder::class);
 //        $this->call(VrMenuTranslationsSeeder::class);
 //        $this->call(VrPagesSeeder::class);

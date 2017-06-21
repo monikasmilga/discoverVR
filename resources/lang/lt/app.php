@@ -32,5 +32,6 @@ return [
     'cover_id' => 'Viršelio nuotrauka',
     'title' => 'Pavadinimas',
     'category_id' => 'Kategorija',
+    'delete_image' => 'Ištrinti nuotrauką',
 
 ];

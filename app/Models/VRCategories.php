@@ -16,7 +16,7 @@ class VRCategories extends CoreModel
         if ($language == null) {
             $language = app()->getLocale();
         }
-        return $this->hasOne(VRCategoriesTranslations::class, 'record_id', 'id')->where('language_code', app()->getLocale());
+        return $this->hasOne(VRCategoriesTranslations::class, 'record_id', 'id')->where('language_code', $language);
     }
 
     protected $with = ['translation'];
