@@ -10,21 +10,36 @@
                     <ul class="nav navbar-nav">
                         @if($menuItem['children'] != null)
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                   aria-haspopup="true" aria-expanded="false"> {{($menuItem['translation']['name'])}}
-                                    <span class="caret"></span></a>
+                                <a href="{{($menuItem['translation']['url'])}}" class="dropdown-toggle"
+                                   data-toggle="dropdown" role="button" aria-haspopup="true"
+                                   aria-expanded="false"> {{($menuItem['translation']['name'])}} <span
+                                            class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     @foreach($menuItem['children'] as $child)
-                                        <li><a href="#">{{($child['translation']['name'])}}</a></li>
+                                        <li>
+                                            <a href="{{($child['translation']['url'])}}">{{($child['translation']['name'])}}</a>
+                                        </li>
                                     @endforeach
                                 </ul>
                             </li>
                         @else
-                            <li><a href="#">{{($menuItem['translation']['name'])}}</a></li>
+                            <li>
+                                <a href="{{($menuItem['translation']['url'])}}">{{($menuItem['translation']['name'])}}</a>
+                            </li>
                         @endif
                     </ul>
                 @endforeach
-
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false"> Kalbos <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            @foreach($languageMenu as $key => $language)
+                            <li><a href="{{$key}}">{{($language)}}</a></li>
+                            @endforeach
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
