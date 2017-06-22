@@ -25,5 +25,5 @@ function getFrontEndMenu()
 {
     $data = VRMenu::where('vr_parent_id', '=', null)->with('children')->orderBy('sequence', 'desc')->get()->toArray();
 //dd($data);
-    return [$data];
+    return $data;
 }
