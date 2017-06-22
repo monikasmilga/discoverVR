@@ -40,6 +40,20 @@
                         </ul>
                     </li>
                 </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false"> Kambariai <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                @foreach($vrRooms as $vrRoom)
+
+                                    <li><a href="{{app()->getLocale() . '/pages/'. ($vrRoom['translation']['slug'])}}">{{($vrRoom['translation']['title'])}}</a></li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    </ul>
+
             </div>
         </div>
     </nav>
