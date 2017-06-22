@@ -21,7 +21,7 @@ class VRMenu extends CoreModel
 
     public function children()
     {
-        //
+        return $this->hasMany(VRMenu::class, 'vr_parent_id', 'id')->with('children');
     }
 
     protected $with = ['translation'];
