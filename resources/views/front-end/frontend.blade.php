@@ -48,7 +48,7 @@
                             <ul class="dropdown-menu">
                                 @foreach($vrRooms as $vrRoom)
 
-                                    <li><a href="{{app()->getLocale() . '/pages/'. ($vrRoom['translation']['slug'])}}">{{($vrRoom['translation']['title'])}}</a></li>
+                                    <li><a href="/{{app()->getLocale() . '/pages/'. ($vrRoom['translation']['slug'])}}">{{($vrRoom['translation']['title'])}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
