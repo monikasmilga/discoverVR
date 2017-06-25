@@ -10,15 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', ['as' => 'app.frontend.index', 'uses' => 'FrontEndController@index']);
-
-Route::get('/{lang}/pages/{slug}', ['as' => 'app.frontend.showpages', 'uses' => 'FrontEndController@showPages']);
-
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
 
 
 //Route::get('/', function () {
@@ -263,6 +258,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin-check']], fun
 
     });
 
+});
 
+Route::group(['prefix' => '/'], function () {
+
+    Route::get('/', ['as' => 'app.frontend.index', 'uses' => 'FrontEndController@index']);
+
+    Route::get('/{lang}/pages/{slug}', ['as' => 'app.frontend.showpages', 'uses' => 'FrontEndController@showPages']);
 
 });
