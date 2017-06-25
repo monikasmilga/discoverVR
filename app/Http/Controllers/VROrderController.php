@@ -46,7 +46,10 @@ class VROrderController extends Controller
      */
     public function adminStore()
     {
-        dd(request()->all());
+        $data=request()->all();
+        VROrder::create($data);
+
+        return redirect(route('app.order.index'));
     }
 
     /**
@@ -68,9 +71,16 @@ class VROrderController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function adminEdit($id)
     {
-        //
+        $record = VROrder::find($id)->toArray();
+        $config['record'] = $record;
+        $config['pageTitle'] = trans('app.oder');
+        $config['route'] = route('app.order.update', $id);
+
+        return view('admin.form', $config);
+
+
     }
 
     /**
@@ -80,9 +90,12 @@ class VROrderController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function update($id)
+    public function adminUpdate($id)
     {
-        //
+        $data = request()->all();
+        $record = VROrder::find($id);
+        $record->update($data);
+        return redirect(route('app.order.index'));
     }
 
     /**
@@ -94,7 +107,9 @@ class VROrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        VROrder::destroy($id);
+
+        return json_encode(["success" => true, "id" => $id]);
     }
 
     public function getFormData()
@@ -103,21 +118,12 @@ class VROrderController extends Controller
             'type' => 'dropdown',
             'key' => 'status',
             'options' => [
-                'pending' => 'pending',
-                'canceled' => 'canceled',
-                'approved' => 'approved'
+                'pending' => trans('app.pending'),
+                'canceled' => trans('app.canceled'),
+                'approved' => trans('app.approved')
             ]
         ];
-//                    [
-//                        'name' => 'pending',
-//                        'value' => 'pending'
-//                    ],                    [
-//                        'name' => 'canceled',
-//                        'value' => 'canceled',
-//                    ],                    [
-//                        'name' => 'approved',
-//                        'value' => 'approved',
-//                    ]
+
 
         $config['fields'][] = [
             'type' => 'dropdown',

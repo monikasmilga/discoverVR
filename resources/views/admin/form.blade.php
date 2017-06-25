@@ -20,7 +20,7 @@
 
                 @if(isset($record[$field['key']]))
 
-                    @if($field['key'] == 'language_code')
+                    @if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status')
 
                         {{Form::select($field['key'], $field['options'], $record[$field['key']])}}<br/>
 
@@ -30,7 +30,7 @@
                     @endif
 
                 @else
-                    @if($field['key'] == 'language_code')
+                    @if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status')
 
                         {{Form::select($field['key'], $field['options'])}}<br/>
 
