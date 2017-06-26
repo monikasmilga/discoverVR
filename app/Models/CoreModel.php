@@ -13,4 +13,9 @@ class CoreModel extends Model
     use SoftDeletes;
 
     use UuidTrait;
+
+    public static function getTableName()
+    {
+        return with(new static)->getTable();
+    }
 }

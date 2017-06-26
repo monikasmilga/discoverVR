@@ -33,5 +33,12 @@ return [
     'title' => 'Pavadinimas',
     'category_id' => 'Kategorija',
     'delete_image' => 'Ištrinti nuotrauką',
+    'experience_id' => 'Patirčių kambarys',
+    'time' => 'Laikas',
+    'status' => 'Būklė',
+    'pending' => 'Laukiama',
+    'canceled' => "Atšaukta",
+    'approved' => "Patvirtinta",
+    'user_id' => "Vartotojo ID",
 
 ];

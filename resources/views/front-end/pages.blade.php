@@ -11,7 +11,7 @@
 </div>
     <div>
 
-        <img src="{{$page['image']['path']}}">
+        <img src="{{asset($page['image']['path'])}}">
 
     </div>
 

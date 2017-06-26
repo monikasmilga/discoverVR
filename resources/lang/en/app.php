@@ -33,6 +33,12 @@ return [
     'category_id' => 'Category',
     'title' => 'Title',
     'delete_image' => 'Delete image',
-
+    'experience_id' => 'Experience room',
+    'time' => 'Time',
+    'status' => 'Status',
+    'pending' => 'Pending',
+    'canceled' => "Canceled",
+    'approved' => "Approved",
+    'user_id' => "User ID",
 
 ];

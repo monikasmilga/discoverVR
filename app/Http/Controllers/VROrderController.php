@@ -2,7 +2,12 @@
 
 use App\Models\VRMenu;
 use App\Models\VROrder;
+use App\Models\VRPages;
+use App\Models\VRPagesTranslations;
 use App\Models\VRUsers;
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
+use DateTimeZone;
 use Illuminate\Routing\Controller;
 
 class VROrderController extends Controller
@@ -18,7 +23,7 @@ class VROrderController extends Controller
     {
         $config['list'] = VROrder::get()->toArray();
         $config['pageTitle'] = trans('app.orders');
-        $config['route'] = route ('app.order.create');
+        $config['route'] = route('app.order.create');
 
         return view('admin.list', $config);
     }
@@ -46,7 +51,7 @@ class VROrderController extends Controller
      */
     public function adminStore()
     {
-        $data=request()->all();
+        $data = request()->all();
         VROrder::create($data);
 
         return redirect(route('app.order.index'));
@@ -112,6 +117,17 @@ class VROrderController extends Controller
         return json_encode(["success" => true, "id" => $id]);
     }
 
+    public function getVRRoomsWithCategories()
+    {
+
+        $r = VRPages::getTableName();
+        $t = VRPagesTranslations::getTableName();
+
+        return VRPages::where('category_id', '=', 'vr_rooms')->join($t, "$r.id", '=', "$t.record_id")->pluck("$t.title", "$r.id")->toArray();
+
+
+    }
+
     public function getFormData()
     {
         $config['fields'][] = [
@@ -124,12 +140,31 @@ class VROrderController extends Controller
             ]
         ];
 
-
         $config['fields'][] = [
             'type' => 'dropdown',
             'key' => 'user_id',
-            'options' => VRUsers::where('id', '=', 'user_id')->pluck('name', 'id'),
+            'options' => VRUsers::pluck('email', 'id'),
         ];
+
+        $options = [];
+        $now = Carbon::now();
+        $end_data = Carbon::createFromDate()->addDay(14);
+        for ($option = $now; $option->lte($end_data); $option->addDay()) {
+            $options[] = $option->format('Y-m-d');
+        }
+
+        $config['fields'][] = [
+            'type' => 'dropdown',
+            'key' => 'time',
+            'options' => $options,
+        ];
+
+        $config['fields'][] = [
+            'type' => 'dropdown',
+            'key' => 'experience_id',
+            'options' => $this->getVRRoomsWithCategories(),
+        ];
+
 
         return $config;
     }
