@@ -150,7 +150,7 @@ class VROrderController extends Controller
         $now = Carbon::now();
         $end_data = Carbon::createFromDate()->addDay(14);
         for ($option = $now; $option->lte($end_data); $option->addDay()) {
-            $options[] = $option->format('Y-m-d');
+            $options[$option->format('Y-m-d')] = $option->format('Y-m-d');
         }
 
         $config['fields'][] = [

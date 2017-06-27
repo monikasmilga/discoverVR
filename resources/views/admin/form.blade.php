@@ -103,6 +103,17 @@
 //            alert($('#language_code').val())
         })
 
+        if ($('#time').length > 0 && $('#experience_id').length > 0) {
+
+            $('#time').bind("change", function () {
+                console.log($('#time').val())
+            })
+
+            $('#experience_id').bind("change", function () {
+                console.log($('#experience_id').val())
+            })
+        }
+
 
     </script>
 @endsection
