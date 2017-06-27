@@ -117,6 +117,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin-check']], fun
     Route::group(['prefix' => 'order'], function () {
 
         Route::get('/', ['as' => 'app.order.index', 'uses' => 'VROrderController@adminIndex']);
+        Route::get('/reservation', ['as' => 'app.order.reservation', 'uses' => 'VROrderController@adminReservation']);
 
         Route::get('/create', ['as' => 'app.order.create', 'uses' => 'VROrderController@adminCreate']);
         Route::post('/create', ['as' => 'app.order.store', 'uses' => 'VROrderController@adminStore']);

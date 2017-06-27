@@ -4,6 +4,7 @@ use App\Models\VRMenu;
 use App\Models\VROrder;
 use App\Models\VRPages;
 use App\Models\VRPagesTranslations;
+use App\Models\VRReservations;
 use App\Models\VRUsers;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
@@ -117,6 +118,24 @@ class VROrderController extends Controller
         return json_encode(["success" => true, "id" => $id]);
     }
 
+
+
+    public function adminReservation()
+    {
+
+        $data = request()->all();
+
+        $start=Carbon::parse($data['time'])->startOfDay();
+        $end=Carbon::parse($data['time'])->endOfDay();
+
+        return VRReservations::where('time', '>=', $start)->where('time', '<=', $end)->pluck('time')->toArray();
+        
+    }
+
+    /**
+     * @return mixed
+     * Returns data from two different tables
+     */
     public function getVRRoomsWithCategories()
     {
 
@@ -128,6 +147,11 @@ class VROrderController extends Controller
 
     }
 
+
+    /**
+     * @return mixed
+     *
+     */
     public function getFormData()
     {
         $config['fields'][] = [
