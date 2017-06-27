@@ -119,7 +119,6 @@ class VROrderController extends Controller
     }
 
 
-
     public function adminReservation()
     {
 
@@ -128,8 +127,10 @@ class VROrderController extends Controller
         $start=Carbon::parse($data['time'])->startOfDay();
         $end=Carbon::parse($data['time'])->endOfDay();
 
-        return VRReservations::where('time', '>=', $start)->where('time', '<=', $end)->pluck('time')->toArray();
-        
+        return VRReservations::where('time', '>=', $start)
+                                ->where('time', '<=', $end)->where('experience_id', $data['experience_id'])
+                                ->pluck('time')->toArray();
+
     }
 
     /**

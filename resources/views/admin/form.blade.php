@@ -22,7 +22,7 @@
 
                     @if (in_array($field['key'], ['language_code', 'user_id', 'status', 'time', 'experience_id']))
 
-                    {{--@if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status' || $field['key'] == 'time' || $field['key'] == 'experience_id')--}}
+                        {{--@if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status' || $field['key'] == 'time' || $field['key'] == 'experience_id')--}}
 
                         {{Form::select($field['key'], $field['options'], $record[$field['key']])}}<br/>
 
@@ -105,6 +105,7 @@
 //            alert($('#language_code').val())
         })
 
+
         if ($('#time').length > 0 && $('#experience_id').length > 0) {
 
             $('#time').bind("change", getAvailableHours);
@@ -113,6 +114,18 @@
             function getAvailableHours() {
                 console.log($('#experience_id').val());
                 console.log($('#time').val());
+
+                $.ajax({
+                    url: '{{route('app.order.reservation')}}',
+                    type: 'GET',
+                    data: {
+                        time: $('#time').val(),
+                        experience_id: $('#experience_id').val(),
+                    },
+                    success: function (response){
+                       console.log(response)
+                    }
+                })
             }
         }
 
