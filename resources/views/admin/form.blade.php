@@ -20,7 +20,9 @@
 
                 @if(isset($record[$field['key']]))
 
-                    @if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status')
+                    @if (in_array($field['key'], ['language_code', 'user_id', 'status', 'time', 'experience_id']))
+
+                    {{--@if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status' || $field['key'] == 'time' || $field['key'] == 'experience_id')--}}
 
                         {{Form::select($field['key'], $field['options'], $record[$field['key']])}}<br/>
 
@@ -30,7 +32,7 @@
                     @endif
 
                 @else
-                    @if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status')
+                    @if($field['key'] == 'language_code' || $field['key'] == 'user_id' || $field['key'] == 'status' || $field['key'] == 'time' || $field['key'] == 'experience_id')
 
                         {{Form::select($field['key'], $field['options'])}}<br/>
 
@@ -105,13 +107,13 @@
 
         if ($('#time').length > 0 && $('#experience_id').length > 0) {
 
-            $('#time').bind("change", function () {
-                console.log($('#time').val())
-            })
+            $('#time').bind("change", getAvailableHours);
+            $('#experience_id').bind("change", getAvailableHours);
 
-            $('#experience_id').bind("change", function () {
-                console.log($('#experience_id').val())
-            })
+            function getAvailableHours() {
+                console.log($('#experience_id').val());
+                console.log($('#time').val());
+            }
         }
 
 
