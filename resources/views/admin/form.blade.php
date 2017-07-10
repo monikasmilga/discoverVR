@@ -82,7 +82,11 @@
                     {{Form::file('file')}}
                 @endif
 
+            @elseif($field['type'] == 'reservations')
+                <div id="reservations"></div>
+                <div id="reservations-invisible" style="display: none;"></div>
             @endif
+
 
 
 
@@ -105,36 +109,30 @@
 //            alert($('#language_code').val())
         })
 
+        function getAvailableHours() {
+            $.ajax({
+                url: '{{route('app.order.reservation')}}',
+                type: 'GET',
+                data: {
+                    time: $('#time').val(),
+                    experience_id: $('#experience_id').val(),
+                },
+                success: function (response) {
+
+                    generateCheckBoxes($('#time').val(), response);
+                },
+                error: function () {
+                    alert('ERROR')
+                }
+            });
+        }
 
         if ($('#time').length > 0 && $('#experience_id').length > 0) {
 
             $('#time').bind("change", getAvailableHours);
             $('#experience_id').bind("change", getAvailableHours);
 
-            function getAvailableHours() {
-                console.log($('#experience_id').val());
-                console.log($('#time').val());
-
-                $.ajax({
-                    url: '{{route('app.order.reservation')}}',
-                    type: 'GET',
-                    data: {
-                        time: $('#time').val(),
-                        experience_id: $('#experience_id').val(),
-                    },
-                    success: function (response) {
-                        console.log(response)
-                    }
-                })
-            }
-
-            var list = prepareForCheckBox ('2017-06-27');
-            console.log(list);
-
-            function prepareForCheckBox(day)
-            {
-                // reserved days from server
-                var reserved = [day + ' 17:00:00', day + ' 17:10:00'];
+            function prepareForCheckBox(day, reserved) {
 
                 // new date
                 var date = new Date(day + ' 00:00:00');
@@ -159,11 +157,9 @@
                 date.setMinutes(Math.ceil(date.getMinutes() / 10) * 10);
 
                 // while it is not closing time execute
-                while (date.getHours() < closingTime)
-                {
+                while (date.getHours() < closingTime) {
                     // cheking if hours are more than opening time
-                    if (date.getHours() >= openingTime)
-                    {
+                    if (date.getHours() >= openingTime) {
                         // creating reservation time visible for users
                         var time = date.getHours() + ':' + pad(date.getMinutes(), 2);
                         // creating dateTime / id which will be recorded in the databse
@@ -193,6 +189,24 @@
 
                 return availableTimes;
             }
+        }
+
+        function generateCheckBoxes(time, resp) {
+            var a = prepareForCheckBox(time, resp);
+            var checkboxes = '';
+            var exp = $('#experience_id').val();
+            a.forEach(function (entry) {
+                //ToDO check if entry is reserved, If yes then check and disable it else normal
+                if (entry.reserved === 1)
+                    checkboxes += '<input type="checkbox" name="' + exp + '[]" value="' + entry.id + '" checked disabled > ' + entry.title + '<br>';
+                else
+                    checkboxes += '<input type="checkbox" name="' + exp + '[]" value="' + entry.id + '">' + entry.title + '<br>';
+            });
+            $('#reservations').html(checkboxes);
+            $("input[name|='" + exp + "[]']").bind('click', function (e) {
+                console.log($(e.currentTarget).val());
+                $('#reservations-invisible').append('<input id="' + $(this).attr('value') + '" type="checkbox" name="' + $(this).attr('name') + '" value="' + $(this).attr('value') + '" checked>');
+            });
 
         }
 

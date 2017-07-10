@@ -190,6 +190,11 @@ class VROrderController extends Controller
             'options' => $this->getVRRoomsWithCategories(),
         ];
 
+        $config['fields'][] = [
+            'type' => 'reservations',
+            'key' => 'reservations',
+        ];
+
 
         return $config;
     }
