@@ -19,7 +19,7 @@
                 <table class="table table-striped">
                     <tr>
                         @foreach($list[0] as $key => $value)
-                            <th>{{$key}}</th>
+                            <th>{{trans('app.'. $key)}}</th>
                         @endforeach
                         @if(isset($edit))
                             <th> {{ trans('app.edit') }}</th>
