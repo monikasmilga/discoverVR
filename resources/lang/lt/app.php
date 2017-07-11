@@ -40,5 +40,12 @@ return [
     'canceled' => "Atšaukta",
     'approved' => "Patvirtinta",
     'user_id' => "Vartotojo ID",
-
+    'count' => "Eil. nr.",
+    'id' => "ID",
+    'is_active' => "Aktyvavimas",
+    'created_at' => "Sukurta",
+    'updated_at' => "Atnaujinta",
+    'deleted_at' => "Ištrinta",
+    'translation' => "Vertimas",
+    'role' => "Rolė",
 ];

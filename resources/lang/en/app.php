@@ -40,5 +40,12 @@ return [
     'canceled' => "Canceled",
     'approved' => "Approved",
     'user_id' => "User ID",
-
+    'count' => "Count",
+    'id' => "ID",
+    'is_active' => "Availability",
+    'created_at' => "Created at",
+    'updated_at' => "Updated at",
+    'deleted_at' => "Deleted at",
+    'translation' => "Translation",
+    'role' => "Role",
 ];
